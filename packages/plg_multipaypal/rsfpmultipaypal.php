@@ -56,7 +56,7 @@ class plgSystemRsfpmultipaypal extends JPlugin
 				}
 			}
 
-			$grandTotal = $this->calcTax($args['submission']->values['rsfp_Total'], RSFormProHelper::getConfig('paypal.tax.value'), RSFormProHelper::getConfig('paypal.tax.type'));
+			$grandTotal = $this->calcTax($args['submission']->values['rsfp_Total'], RSFormProHelper::getConfig('multipaypal.tax.value'), RSFormProHelper::getConfig('multipaypal.tax.type'));
 
 			$placeholders = &$args['placeholders'];
 			$values = &$args['values'];
@@ -97,10 +97,10 @@ class plgSystemRsfpmultipaypal extends JPlugin
 			$item->value 	= $this->componentValue;
 			$item->text 	= $data['LABEL'];
 			
-			if ($tax = RSFormProHelper::getConfig('paypal.tax.value'))
+			if ($tax = RSFormProHelper::getConfig('multipaypal.tax.value'))
 			{
 				$item->tax = $tax;
-				$item->tax_type = RSFormProHelper::getConfig('paypal.tax.type') == '0' ? 'percent' : 'fixed';
+				$item->tax_type = RSFormProHelper::getConfig('multipaypal.tax.type') == '0' ? 'percent' : 'fixed';
 
 			}
 
@@ -123,33 +123,33 @@ class plgSystemRsfpmultipaypal extends JPlugin
 
 			$args = array(
 				'cmd'           => '_xclick',
-				'business'      => RSFormProHelper::getConfig('paypal.email'),
+				'business'      => RSFormProHelper::getConfig('multipaypal.email'),
 				'item_name'     => implode(', ', $products),
 				'currency_code' => RSFormProHelper::getConfig('payment.currency'),
 				'amount'        => number_format($price, 2, '.', ''),
-				'notify_url'    => JUri::root() . 'index.php?option=com_rsform&formId=' . $formId . '&task=plugin&plugin_task=paypal.notify&code=' . $code,
+				'notify_url'    => JUri::root() . 'index.php?option=com_rsform&formId=' . $formId . '&task=plugin&plugin_task=multipaypal.notify&code=' . $code,
 				'charset'       => 'utf-8',
-				'lc'            => RSFormProHelper::getConfig('paypal.language') ? RSFormProHelper::getConfig('paypal.language') : 'US',
+				'lc'            => RSFormProHelper::getConfig('multipaypal.language') ? RSFormProHelper::getConfig('multipaypal.language') : 'US',
 				'bn'            => 'RSJoomla_SP',
-				'return'        => JUri::root() . 'index.php?option=com_rsform&formId=' . $formId . '&task=plugin&plugin_task=paypal.return'
+				'return'        => JUri::root() . 'index.php?option=com_rsform&formId=' . $formId . '&task=plugin&plugin_task=multipaypal.return'
 			);
 
 			// Add cancel URL
-			if ($cancel = RSFormProHelper::getConfig('paypal.cancel'))
+			if ($cancel = RSFormProHelper::getConfig('multipaypal.cancel'))
 			{
 				$args['cancel_return'] = str_replace($replace, $with, $cancel);
 			}
 
 			// Add return URL
-			if ($return = RSFormProHelper::getConfig('paypal.return'))
+			if ($return = RSFormProHelper::getConfig('multipaypal.return'))
 			{
 				$args['return'] = str_replace($replace, $with, $return);
 			}
 
 			// Add tax
-			if ($tax = RSFormProHelper::getConfig('paypal.tax.value'))
+			if ($tax = RSFormProHelper::getConfig('multipaypal.tax.value'))
 			{
-				if (RSFormProHelper::getConfig('paypal.tax.type'))
+				if (RSFormProHelper::getConfig('multipaypal.tax.type'))
 				{
 					$args['tax'] = $tax;
 				}
@@ -208,7 +208,7 @@ class plgSystemRsfpmultipaypal extends JPlugin
 		$this->addLogEntry("----------------------------- \n");
 
 		$config   = JFactory::getConfig();
-		$log_path = $config->get('log_path') . '/rsformpro_paypal_log.php';
+		$log_path = $config->get('log_path') . '/rsformpro_multipaypal_log.php';
 		$log      = implode("\n", $this->log);
 
 		/**
@@ -243,7 +243,7 @@ class plgSystemRsfpmultipaypal extends JPlugin
 		$input    = JFactory::getApplication()->input;
 
 		// Notification receipt from Paypal
-		if ($input->getString('plugin_task', '') == 'paypal.notify')
+		if ($input->getString('plugin_task', '') == 'multipaypal.notify')
 		{
 			$code 	= $input->getCmd('code');
 			$formId = $input->getInt('formId');
@@ -323,7 +323,7 @@ class plgSystemRsfpmultipaypal extends JPlugin
 			jexit('ok');
 		}
 
-		if ($input->getString('plugin_task', '') == 'paypal.return')
+		if ($input->getString('plugin_task', '') == 'multipaypal.return')
 		{
 			$formId = $input->getInt('formId');
 			$this->payPalReturn($formId);
@@ -338,7 +338,7 @@ class plgSystemRsfpmultipaypal extends JPlugin
 		/**
 		 * Set the URL
 		 */
-		$url = RSFormProHelper::getConfig('paypal.test') ? 'https://ipnpb.paypal.com/cgi-bin/webscr' : 'https://ipnpb.sandbox.paypal.com/cgi-bin/webscr';
+		$url = RSFormProHelper::getConfig('multipaypal.test') ? 'https://ipnpb.paypal.com/cgi-bin/webscr' : 'https://ipnpb.sandbox.paypal.com/cgi-bin/webscr';
 
 		/**
 		 * Build a default array for errors
@@ -496,10 +496,10 @@ class plgSystemRsfpmultipaypal extends JPlugin
 		 * Check if the Email address of the receiving end is the same with the one from RSForm!Pro Configuration
 		 * return error if it isn't
 		 */
-		if (RSFormProHelper::getConfig('paypal.email') !== $validation_fields['receiver_email'])
+		if (RSFormProHelper::getConfig('multipaypal.email') !== $validation_fields['receiver_email'])
 		{
 			$array['error']  = true;
-			$array['reason'] = sprintf('The email address is not correct - received %s, expected %s', $validation_fields['receiver_email'], RSFormProHelper::getConfig('paypal.email'));
+			$array['reason'] = sprintf('The email address is not correct - received %s, expected %s', $validation_fields['receiver_email'], RSFormProHelper::getConfig('multipaypal.email'));
 
 			return $array;
 		}
@@ -507,7 +507,7 @@ class plgSystemRsfpmultipaypal extends JPlugin
 		/**
 		 * Write it in log if it passed
 		 */
-		$this->addLogEntry(sprintf('Checking the email address : %s - %s. Email address is correct.', RSFormProHelper::getConfig('paypal.email'), $validation_fields['receiver_email']));
+		$this->addLogEntry(sprintf('Checking the email address : %s - %s. Email address is correct.', RSFormProHelper::getConfig('multipaypal.email'), $validation_fields['receiver_email']));
 
 		/**
 		 * Check the currency of the transaction, see if it matches RSForm!Pro Configuration
@@ -588,7 +588,7 @@ class plgSystemRsfpmultipaypal extends JPlugin
 		$query = $db->getQuery(true)
 			->select('*')
 			->from($db->qn('#__rsform_config'))
-			->where($db->qn('SettingName') . ' LIKE ' . $db->q('paypal.%', false));
+			->where($db->qn('SettingName') . ' LIKE ' . $db->q('multipaypal.%', false));
 		if ($results = $db->setQuery($query)->loadObjectList())
 		{
 			foreach ($results as $result)
@@ -606,7 +606,7 @@ class plgSystemRsfpmultipaypal extends JPlugin
 
 		JForm::addFormPath(__DIR__ . '/forms');
 
-		$form = JForm::getInstance( 'plg_system_rsfppaypal.configuration', 'configuration', array('control' => 'rsformConfig'), false, false );
+		$form = JForm::getInstance( 'plg_system_rsfpmultipaypal.configuration', 'configuration', array('control' => 'rsformConfig'), false, false );
 		$form->bind($this->loadFormData());
 
 		?>
@@ -721,7 +721,7 @@ class RSFormProMultiPayPal
 		static $inst;
 		if (!$inst) {
 			$inst = new RSFormProMultiPayPal;
-			$inst->url = RSFormProHelper::getConfig('paypal.test') ? 'https://www.paypal.com/cgi-bin/webscr' : 'https://www.sandbox.paypal.com/cgi-bin/webscr';
+			$inst->url = RSFormProHelper::getConfig('multipaypal.test') ? 'https://www.paypal.com/cgi-bin/webscr' : 'https://www.sandbox.paypal.com/cgi-bin/webscr';
 		}
 
 		return $inst;

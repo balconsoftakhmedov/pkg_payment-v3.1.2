@@ -1,11 +1,11 @@
 INSERT IGNORE INTO `#__rsform_config` (`SettingName`, `SettingValue`) VALUES
-('paypal.email', ''),
-('paypal.return', ''),
-('paypal.test', '0'),
-('paypal.cancel', ''),
-('paypal.language', 'US'),
-('paypal.tax.type', '1'),
-('paypal.tax.value', '');
+('multipaypal.email', ''),
+('multipaypal.return', ''),
+('multipaypal.test', '0'),
+('multipaypal.cancel', ''),
+('multipaypal.language', 'US'),
+('multipaypal.tax.type', '1'),
+('multipaypal.tax.value', '');
 
 DELETE FROM `#__rsform_component_types` WHERE `ComponentTypeId` IN (520);
 
