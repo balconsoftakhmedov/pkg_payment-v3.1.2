@@ -160,7 +160,7 @@ class plgSystemRsfpmultipaypal extends JPlugin
 			}
 
 			// Get a new instance of the PayPal object. This is used so that we can programatically change values sent to PayPal through the "Scripts" areas.
-			$paypal = RSFormProPayPal::getInstance();
+			$paypal = RSFormProMultiPayPal::getInstance();
 
 			// If any options have already been set, use this to override the ones used here
 			$paypal->args = array_merge($args, $paypal->args);
@@ -712,7 +712,7 @@ class plgSystemRsfpmultipaypal extends JPlugin
 	}
 }
 
-class RSFormProPayPal
+class RSFormProMultiPayPal
 {
 	public $args = array();
 	public $url;
@@ -720,7 +720,7 @@ class RSFormProPayPal
 	public static function getInstance() {
 		static $inst;
 		if (!$inst) {
-			$inst = new RSFormProPayPal;
+			$inst = new RSFormProMultiPayPal;
 			$inst->url = RSFormProHelper::getConfig('paypal.test') ? 'https://www.paypal.com/cgi-bin/webscr' : 'https://www.sandbox.paypal.com/cgi-bin/webscr';
 		}
 
