@@ -9,10 +9,10 @@ defined('_JEXEC') or die('Restricted access');
 
 require_once JPATH_ADMINISTRATOR.'/components/com_rsform/helpers/field.php';
 
-class RSFormProFieldPaypal extends RSFormProField
+class RSFormProFieldOfflinepayment extends RSFormProField
 {
 	public function getPreviewInput()
 	{
-		return '<span style="font-size:24px;margin-right:5px" class="rsficon rsficon-paypal"></span> ' . $this->getProperty('LABEL');
+		return '<span class="rsficon rsficon-file-text" style="font-size:24px;margin-right:5px"></span> ' . $this->getProperty('LABEL');
 	}
 }
