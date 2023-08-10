@@ -7,12 +7,12 @@
 
 defined('_JEXEC') or die('Restricted access');
 
-define('RSFORM_FIELD_PAYMENT_PAYPAL', 500);
+define('RSFORM_FIELD_MULTI_PAYMENT_PAYPAL', 520);
 
 class plgSystemRsfpmultipaypal extends JPlugin
 {
-	protected $componentId 	    = RSFORM_FIELD_PAYMENT_PAYPAL;
-	protected $componentValue   = 'paypal';
+	protected $componentId 	    = RSFORM_FIELD_MULTI_PAYMENT_PAYPAL;
+	protected $componentValue   = 'multipaypal';
 	protected $log = array();
 
 	protected $autoloadLanguage = true;
@@ -20,10 +20,10 @@ class plgSystemRsfpmultipaypal extends JPlugin
 	public function onRsformBackendAfterCreateFieldGroups(&$fieldGroups, $self)
 	{
 		$formId = JFactory::getApplication()->input->getInt('formId');
-		$exists = RSFormProHelper::componentExists($formId, RSFORM_FIELD_PAYMENT_PAYPAL);
+		$exists = RSFormProHelper::componentExists($formId, RSFORM_FIELD_MULTI_PAYMENT_PAYPAL);
 
 		$fieldGroups['payment']->fields[] = (object) array(
-			'id' 	=> RSFORM_FIELD_PAYMENT_PAYPAL,
+			'id' 	=> RSFORM_FIELD_MULTI_PAYMENT_PAYPAL,
 			'name' 	=> JText::_('RSFP_PAYPAL_COMPONENT'),
 			'icon'  => 'rsficon rsficon-paypal',
 			'exists' => $exists ? $exists[0] : false
