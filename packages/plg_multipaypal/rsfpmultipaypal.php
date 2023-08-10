@@ -9,7 +9,7 @@ defined('_JEXEC') or die('Restricted access');
 
 define('RSFORM_FIELD_PAYMENT_PAYPAL', 500);
 
-class plgSystemRsfppaypal extends JPlugin
+class plgSystemRsfpmultipaypal extends JPlugin
 {
 	protected $componentId 	    = RSFORM_FIELD_PAYMENT_PAYPAL;
 	protected $componentValue   = 'paypal';
