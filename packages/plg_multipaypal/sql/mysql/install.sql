@@ -7,14 +7,14 @@ INSERT IGNORE INTO `#__rsform_config` (`SettingName`, `SettingValue`) VALUES
 ('paypal.tax.type', '1'),
 ('paypal.tax.value', '');
 
-DELETE FROM `#__rsform_component_types` WHERE `ComponentTypeId` IN (500);
+DELETE FROM `#__rsform_component_types` WHERE `ComponentTypeId` IN (520);
 
 INSERT IGNORE INTO `#__rsform_component_types` (`ComponentTypeId`, `ComponentTypeName`, `CanBeDuplicated`) VALUES
-(500, 'paypal', 0);
+(520, 'paypal', 0);
 
-DELETE FROM `#__rsform_component_type_fields` WHERE ComponentTypeId = 500;
+DELETE FROM `#__rsform_component_type_fields` WHERE ComponentTypeId = 520;
 INSERT IGNORE INTO `#__rsform_component_type_fields` (`ComponentTypeId`, `FieldName`, `FieldType`, `FieldValues`, `Ordering`) VALUES
-(500, 'NAME', 'textbox', '', 0),
-(500, 'LABEL', 'textbox', '', 1),
-(500, 'COMPONENTTYPE', 'hidden', '500', 2),
-(500, 'LAYOUTHIDDEN', 'hiddenparam', 'YES', 7);
+(520, 'NAME', 'textbox', '', 0),
+(520, 'LABEL', 'textbox', '', 1),
+(520, 'COMPONENTTYPE', 'hidden', '520', 2),
+(520, 'LAYOUTHIDDEN', 'hiddenparam', 'YES', 7);
