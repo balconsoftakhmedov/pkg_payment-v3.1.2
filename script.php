@@ -8,7 +8,7 @@
 // no direct access
 defined( '_JEXEC' ) or die( 'Restricted access' );
 
-class pkg_RSFormProPaymentPluginsInstallerScript
+class pkg_RSFormProMultiPaymentPluginsInstallerScript
 {
 	protected static $minJoomla = '3.10.0';
 	protected static $minComponent = '3.1.2';
