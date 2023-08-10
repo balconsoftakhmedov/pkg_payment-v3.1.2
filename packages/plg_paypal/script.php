@@ -9,7 +9,7 @@
 // no direct access
 defined( '_JEXEC' ) or die( 'Restricted access' );
 
-class plgSystemRsfppaypalInstallerScript
+class plgSystemRsfpmultipaypalInstallerScript
 {
 	protected static $minJoomla = '3.7.0';
 	protected static $minComponent = '3.0.0';

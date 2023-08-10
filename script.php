@@ -62,9 +62,7 @@ class pkg_RSFormProPaymentPluginsInstallerScript
 			return true;
 		}
 		
-		$this->enablePlugin('rsfppayment');
 		$this->enablePlugin('rsfppaypal');
-		$this->enablePlugin('rsfpofflinepayment');
 	}
 	
 	protected function runSQL($source, $file, $package='')
