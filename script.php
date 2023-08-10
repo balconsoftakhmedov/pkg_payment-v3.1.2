@@ -62,7 +62,7 @@ class pkg_RSFormProMultiPaymentPluginsInstallerScript
 			return true;
 		}
 		
-		$this->enablePlugin('rsfppaypal');
+		$this->enablePlugin('rsfpmultipaypal');
 	}
 	
 	protected function runSQL($source, $file, $package='')

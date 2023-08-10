@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension version="3.0" type="plugin" group="system" method="upgrade">
-	<name>System - RSForm! Pro PayPal</name>
+	<name>System - RSForm! Pro Multi PayPal</name>
 	<author>RSJoomla!</author>
-	<creationDate>January 2018</creationDate>
+	<creationDate>2023</creationDate>
 	<copyright>(C) 2007-2022 www.rsjoomla.com</copyright>
 	<license>GNU General Public License</license>
-	<authorEmail>support@rsjoomla.com</authorEmail>
-	<authorUrl>www.rsjoomla.com</authorUrl>
+	<authorEmail>tutyou1972@gmail.com</authorEmail>
+	<authorUrl>www.flance.info</authorUrl>
 	<version>3.1.2</version>
 	<description><![CDATA[PLG_SYSTEM_RSFPPAYPAL_DESC]]></description>
 	<scriptfile>script.php</scriptfile>
@@ -18,11 +18,11 @@
 	<files>
 		<folder>forms</folder>
 		<folder>sql</folder>
-		<filename plugin="rsfppaypal">rsfppaypal.php</filename>
+		<filename plugin="rsfpmultipaypal">rsfpmultipaypal.php</filename>
 		<filename>index.html</filename> 
 	</files>
 	<languages folder="language/en-GB">
-		<language tag="en-GB">en-GB.plg_system_rsfppaypal.ini</language>
-		<language tag="en-GB">en-GB.plg_system_rsfppaypal.sys.ini</language>
+		<language tag="en-GB">en-GB.plg_system_rsfpmultipaypal.ini</language>
+		<language tag="en-GB">en-GB.plg_system_rsfpmultipaypal.sys.ini</language>
 	</languages>
 </extension>
