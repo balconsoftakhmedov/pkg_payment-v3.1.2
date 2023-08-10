@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+	<fieldset name="email">
+		<field name="UserEmail" type="radio" class="btn-group btn-group-yesno" label="RSFP_PAYMENT_USER_EMAIL" description="RSFP_PAYMENT_USER_EMAIL_DESC">
+			<option value="0">JNO</option>
+			<option value="1">JYES</option>
+		</field>
+		<field name="AdminEmail" type="radio" class="btn-group btn-group-yesno" label="RSFP_PAYMENT_ADMIN_EMAIL" description="RSFP_PAYMENT_ADMIN_EMAIL_DESC">
+			<option value="0">JNO</option>
+			<option value="1">JYES</option>
+		</field>
+		<field name="AdditionalEmails" type="radio" class="btn-group btn-group-yesno" label="RSFP_PAYMENT_ADDITIONAL_EMAILS" description="RSFP_PAYMENT_ADDITIONAL_EMAILS_DESC">
+			<option value="0">JNO</option>
+			<option value="1">JYES</option>
+		</field>
+		<field name="DisableDeferOfflinePayment" type="radio" class="btn-group btn-group-yesno" label="RSFP_PAYMENT_DISABLE_DEFER_OFFLINE_PAYMENT" description="RSFP_PAYMENT_DISABLE_DEFER_OFFLINE_PAYMENT_DESC">
+			<option value="0">JNO</option>
+			<option value="1">JYES</option>
+		</field>
+	</fieldset>
+	<fieldset name="silentpost">
+		<field name="SilentPost" type="radio" class="btn-group btn-group-yesno" label="RSFP_PAYMENT_DEFER_SILENT_POST" description="RSFP_PAYMENT_DEFER_SILENT_POST_DESC">
+			<option value="0">JNO</option>
+			<option value="1">JYES</option>
+		</field>
+	</fieldset>
+	<fieldset name="mappings">
+		<field name="Mappings" type="radio" class="btn-group btn-group-yesno" label="RSFP_PAYMENT_DEFER_MAPPINGS" description="RSFP_PAYMENT_DEFER_MAPPINGS_DESC">
+			<option value="0">JNO</option>
+			<option value="1">JYES</option>
+		</field>
+	</fieldset>
+</form>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+	<fieldset name="params">
+		<field name="paypal.email" type="text" label="RSFP_PAYPAL_EMAIL" size="100" />
+		<field name="paypal.return" type="text" label="RSFP_PAYPAL_RETURN" size="100" />
+		<field name="paypal.cancel" type="text" label="RSFP_PAYPAL_CANCEL" size="100" />
+		<field name="paypal.test" type="radio" class="btn-group btn-group-yesno" label="RSFP_PAYPAL_TEST">
+			<option value="0">JNO</option>
+			<option value="1">JYES</option>
+		</field>
+		<field name="paypal.tax.type" type="list" label="RSFP_PAYPAL_TAX_TYPE">
+			<option value="0">RSFP_PAYPAL_TAX_TYPE_PERCENT</option>
+			<option value="1">RSFP_PAYPAL_TAX_TYPE_FIXED</option>
+		</field>
+		<field name="paypal.tax.value" type="text" label="RSFP_PAYPAL_TAX_VALUE" size="4" maxlength="5" />
+		<field name="paypal.language" type="text" label="RSFP_PAYPAL_LANGUAGE" size="4" maxlength="2" />
+	</fieldset>
+</form>
